@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<student>
+
+    <info>
+        <name>Yann Mulonda</name>
+        <level>Graduate</level>
+        <major>Software Engineering</major>
+    </info>
+
+    <info>
+        <name>Su Sharma</name>
+        <level>Graduate</level>
+        <major>Software Engineering</major>
+    </info>
+
+    <info>
+        <name>Nick Langer</name>
+        <level>Undergrad</level>
+        <major>Computer Science</major>
+    </info>
+
+</student>
