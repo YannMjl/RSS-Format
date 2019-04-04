@@ -26,6 +26,7 @@ function studentData() {
 
       $(response).find("info").each(function() {
         var _info = '<li>Name: ' + $(this).find(name).text();
+        console.log(_info);
         
         // + '</li><li>Position: ' + $(this).find(position).text() + '</li><li>Major: ' + $(this).find(major).text() + '</li>';
 
