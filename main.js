@@ -8,10 +8,22 @@ $(document).ready(function() {
 
   // calling student data function
   studentData();
+
+  // calling fetchdata once : after that it'll call itself every 1000 milisecond
+  fetchData();
 });
 
+// this function calls studentData to desplay new changes 1000 milisecond 
+// after that have made on DeviceMotionEvent.xml
+function fetchData() {
+  setTimeout(function(){
+    studentData();
+    // recursive call
+    fetchData();
+  }, 1000);
+}
 
-
+// read data from demo.xml
 function studentData() {
 
   $.ajax({
@@ -36,6 +48,11 @@ function studentData() {
     }
   });
 }
+
+
+
+
+
 
 // Get the data we need through an AJAX call
 // Read and Process XML using jQuery Ajax
