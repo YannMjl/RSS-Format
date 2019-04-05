@@ -14,7 +14,7 @@ $(document).ready(function() {
 });
 
 // this function calls studentData to desplay new changes 1000 milisecond 
-// after that have made on DeviceMotionEvent.xml
+// after that have made on Demo.xml
 function fetchData() {
   setTimeout(function(){
     studentData();
@@ -42,7 +42,7 @@ function studentData() {
         
         // + '</li><li>Position: ' + $(this).find(position).text() + '</li><li>Major: ' + $(this).find(major).text() + '</li>';
 
-        // add content to the hmtl          
+        // add content to the HTML          
         $("ul").append(_name);
       });
     }
