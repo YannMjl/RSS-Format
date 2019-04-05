@@ -9,7 +9,7 @@ $(document).ready(function() {
   // calling student data function
   studentData();
 
-  // calling fetchdata once : after that it'll call itself every 1000 milisecond
+  // calling fetchdata once : after that it'll call itself every 100 milisecond
   fetchData();
 });
 
@@ -20,7 +20,7 @@ function fetchData() {
     studentData();
     // recursive call
     fetchData();
-  }, 1000);
+  }, 100);
 }
 
 // read data from demo.xml
@@ -28,7 +28,7 @@ function studentData() {
 
   $.ajax({
     type: "GET",
-    url: "demo.xml",
+    url: "./demo.xml",
     // data: "data",
     dataType: "xml",
     success: function (response) {
@@ -37,13 +37,13 @@ function studentData() {
       $("ul").children().remove();
 
       $(response).find("info").each(function() {
-        var _info = '<li>Name: ' + $(this).find(name).text();
-        console.log(_info);
+        var _name = '<li>Name: ' + $(this).find(name).text();
+        console.log(_name);
         
         // + '</li><li>Position: ' + $(this).find(position).text() + '</li><li>Major: ' + $(this).find(major).text() + '</li>';
 
         // add content to the hmtl          
-        $("ul").append(_info);
+        $("ul").append(_name);
       });
     }
   });
