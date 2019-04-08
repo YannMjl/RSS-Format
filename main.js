@@ -12,8 +12,9 @@ $(document).ready(function() {
   // calling fetchdata once : after that it'll call itself every 100 milisecond
   // fetchData();
 
-  // calling info session 
+  // calling function to display info session 
   infoSession();
+  rssFormat();
 });
 
 // this function calls studentData to desplay new changes 1000 milisecond 
@@ -64,9 +65,9 @@ function infoSession() {
   $.ajax({
     type: "GET",
 
-    url: "https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
+    // url: "https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
 
-    // url: "https://webutils.aws.stthomas.edu/rssutilities.do?url=https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
+    url: "https://webutils.aws.stthomas.edu/rssutilities.do?url=https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
     
     // data: {
     //   'url': "https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
@@ -82,9 +83,6 @@ function infoSession() {
 
     success: function (xml_data) {
 
-      // make sure the ul is empty
-      // $("ul").children().remove();
-
       console.log("displaying xml data");
 
       $(xml_data).find("info").each(function () {
@@ -98,10 +96,6 @@ function infoSession() {
         var _pubDate = $(this).find('pubDate').date();
         console.log("PubDate: " + _pubDate);
 
-        // add content to the HTML          
-        // $("ul").append(_name);
-        // $("ul").append(_position);
-        // $("ul").append(_major);
       });
     }
 
@@ -112,3 +106,47 @@ function infoSession() {
 }
 
 
+// second attempt to read and display xml data
+function rssFormat() {
+
+  var _msg = "start ajax call";
+
+  console.log("Message: " + _msg);
+
+  $.ajax({
+
+    type: "GET",
+
+    dataType: "xml",
+
+    url: "https://webutils.aws.stthomas.edu/rssutilities.do?url=https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
+
+    error: function (e) {
+      console.log(e);
+      console.log("fail");
+      alert("An error occurred while processing XML file.");
+    }
+
+  })
+  .done(function (xml_data){
+
+    console.log("start reading the xml data");
+
+    $(xml_data).find("info").each(function () {
+
+      var _Title = $(this).find('title').text();
+      console.log("Title: " + _Title);
+
+      var _Description = $(this).find('description').text();
+      console.log("Description: " + _Description);
+
+      var _pubDate = $(this).find('pubDate').date();
+      console.log("PubDate: " + _pubDate);
+
+    });
+
+  });
+
+  console.log("end of ajax call");
+  
+}
