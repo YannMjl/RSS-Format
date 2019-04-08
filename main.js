@@ -10,7 +10,7 @@ $(document).ready(function() {
   studentData();
 
   // calling fetchdata once : after that it'll call itself every 100 milisecond
-  fetchData();
+  // fetchData();
 });
 
 // this function calls studentData to desplay new changes 1000 milisecond 
@@ -37,13 +37,17 @@ function studentData() {
       $("ul").children().remove();
 
       $(response).find("info").each(function() {
-        var _name = '<li>Name: ' + $(this).find(name).text();
+        var _name = '<li>Name: ' + $(this).find("name").text();
         console.log(_name);
         
-        // + '</li><li>Position: ' + $(this).find(position).text() + '</li><li>Major: ' + $(this).find(major).text() + '</li>';
+        var _position = '</li><li>Position: ' + $(this).find("position").text();
+
+        var _major = '</li><li>Major: ' + $(this).find("major").text() + '</li>';
 
         // add content to the HTML          
         $("ul").append(_name);
+        $("ul").append(_position);
+        $("ul").append(_major);
       });
     }
   });
