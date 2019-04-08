@@ -20,7 +20,7 @@ function fetchData() {
     studentData();
     // recursive call
     fetchData();
-  }, 100);
+  }, 3000);
 }
 
 // read data from demo.xml
@@ -37,12 +37,12 @@ function studentData() {
       $("ul").children().remove();
 
       $(response).find("info").each(function() {
-        var _name = '<li>Name: ' + $(this).find("name").text();
+        var _name = '<li>Name: ' + $(this).find('name').text();
         console.log(_name);
         
-        var _position = '</li><li>Position: ' + $(this).find("position").text();
+        var _position = '</li><li>Position: ' + $(this).find('position').text();
 
-        var _major = '</li><li>Major: ' + $(this).find("major").text() + '</li>';
+        var _major = '</li><li>Major: ' + $(this).find('major').text() + '</li>';
 
         // add content to the HTML          
         $("ul").append(_name);
