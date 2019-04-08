@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   // calling function to display info session 
   infoSession();
-  rssFormat();
+  // rssFormat();
 });
 
 // this function calls studentData to desplay new changes 1000 milisecond 
@@ -41,40 +41,34 @@ function studentData() {
       $("ul").children().remove();
 
       $(response).find("info").each(function() {
-        var _name = '<li>Name: ' + $(this).find('name').text();
+        var _name = 'Name: ' + $(this).find('name').text();
         console.log(_name);
         
-        var _position = '</li><li>Position: ' + $(this).find('position').text();
+        var _position = 'Position: ' + $(this).find('position').text();
 
-        var _major = '</li><li>Major: ' + $(this).find('major').text() + '</li>';
+        var _major = 'Major: ' + $(this).find('major').text();
 
         // add content to the HTML          
-        $("ul").append(_name);
-        $("ul").append(_position);
-        $("ul").append(_major);
+        $("ul").append('<li>' + _name + '</li>');
+        $("ul").append('<li>' + _position + '</li>');
+        $("ul").append('<li>' + _major + '</li>');
       });
     }
   });
 }
 
-// read and display grad schools info session
+//***************************read and display grad schools info session****************************//
 function infoSession() {
 
-  console.log("making the ajax call");
+  console.log("ajax call: Start");
 
   $.ajax({
     type: "GET",
 
-    // url: "https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
-
     url: "https://webutils.aws.stthomas.edu/rssutilities.do?url=https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
-    
-    // data: {
-    //   'url': "https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
-    //   'cacheTime': 1
-    // },
 
     dataType: "xml",
+
     error: function (e) {
       console.log(e);
       console.log("fail");
@@ -83,9 +77,9 @@ function infoSession() {
 
     success: function (xml_data) {
 
-      console.log("displaying xml data");
+      console.log("Show data: ", xml_data);
 
-      $(xml_data).find("info").each(function () {
+      $(xml_data).find("item").each(function () {
 
         var _Title = $(this).find('title').text();
         console.log("Title: " + _Title);
@@ -93,7 +87,7 @@ function infoSession() {
         var _Description = $(this).find('description').text();
         console.log("Description: " + _Description);
 
-        var _pubDate = $(this).find('pubDate').date();
+        var _pubDate = $(this).find('pubDate').text();
         console.log("PubDate: " + _pubDate);
 
       });
@@ -101,52 +95,7 @@ function infoSession() {
 
   });
 
-  console.log("end of ajax call");
+  console.log("ajax call: end");
 
 }
 
-
-// second attempt to read and display xml data
-function rssFormat() {
-
-  var _msg = "start ajax call";
-
-  console.log("Message: " + _msg);
-
-  $.ajax({
-
-    type: "GET",
-
-    dataType: "xml",
-
-    url: "https://webutils.aws.stthomas.edu/rssutilities.do?url=https://rssonefeed.aws.stthomas.edu/feed?id=140&feedReverse=true&feedReverse=true",
-
-    error: function (e) {
-      console.log(e);
-      console.log("fail");
-      alert("An error occurred while processing XML file.");
-    }
-
-  })
-  .done(function (xml_data){
-
-    console.log("start reading the xml data");
-
-    $(xml_data).find("info").each(function () {
-
-      var _Title = $(this).find('title').text();
-      console.log("Title: " + _Title);
-
-      var _Description = $(this).find('description').text();
-      console.log("Description: " + _Description);
-
-      var _pubDate = $(this).find('pubDate').date();
-      console.log("PubDate: " + _pubDate);
-
-    });
-
-  });
-
-  console.log("end of ajax call");
-  
-}
