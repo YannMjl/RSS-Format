@@ -93,7 +93,7 @@ function infoSession() {
         var _link = $(this).find('link').text();
         console.log("Link: " + _link);
 
-        // add content to the HTML
+        // add content to the HTML | Package format
         // For this page: https://www.stthomas.edu/admissions/graduate/
         var _show = '<div class="listing-item cf event" itemscope="" itemtype="http://schema.org/Event"><h3 itemprop="name" class="has-img">' 
                   +'<a itemprop="url" href="' + _link + '">'
@@ -104,7 +104,7 @@ function infoSession() {
         $("#show").append(_show);
         
 
-        // add content to the HTML
+        // add content to the HTML | Package format
         // For this page: https: //www.stthomas.edu/admissions/graduate/informationsessions/ 
         var show_informationsessions = '<h3 itemprop = "name"><a itemprop ="url" href ="' + _link + '">' + _Title + '</a></h3 >'
           + '<div class="info"><span><span itemprop="startDate" class="date-fix">' + _pubDate
