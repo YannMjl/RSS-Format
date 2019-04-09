@@ -96,7 +96,7 @@ function infoSession() {
         
         // add content to the HTML
         var _show = '<div class="listing-item cf event" itemscope="" itemtype="http://schema.org/Event"><h3 itemprop="name" class="has-img">' 
-                  + '<a itemprop="url" href="$link$">' 
+                  +'<a itemprop="url" href="' + _link + '">'
                   + _Title + '</a></h3><div class="info" itemprop="startDate"><span class="date-fix">' 
                   + _pubDate + '</span></div><p itemprop="description">' + _Description + '</p></div>';
 
