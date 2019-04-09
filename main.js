@@ -90,6 +90,8 @@ function infoSession() {
         var _pubDate = $(this).find('pubDate').text();
         console.log("PubDate: " + _pubDate);
 
+        // add content to the HTML
+
       });
     }
 
