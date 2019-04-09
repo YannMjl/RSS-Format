@@ -90,7 +90,19 @@ function infoSession() {
         var _pubDate = $(this).find('pubDate').text();
         console.log("PubDate: " + _pubDate);
 
+        var _link = $(this).find('link').text();
+        console.log("Link: " + _link);
+
+        
         // add content to the HTML
+        var _show = '<div class="listing-item cf event" itemscope="" itemtype="http://schema.org/Event"><h3 itemprop="name" class="has-img">' 
+                  + '<a itemprop="url" href="$link$">' 
+                  + _Title + '</a></h3><div class="info" itemprop="startDate"><span class="date-fix">' 
+                  + _pubDate + '</span></div><p itemprop="description">' + _Description + '</p></div>';
+
+        // append content to hmtl
+        $("#show").append(_show);
+        
 
       });
     }
