@@ -57,7 +57,7 @@ function studentData() {
   });
 }
 
-//***************************read and display grad schools info session****************************//
+//*************************- read and display grad schools info session -**************************//
 function infoSession() {
 
   console.log("ajax call: Start");
@@ -93,8 +93,8 @@ function infoSession() {
         var _link = $(this).find('link').text();
         console.log("Link: " + _link);
 
-        
         // add content to the HTML
+        // For this page: https://www.stthomas.edu/admissions/graduate/
         var _show = '<div class="listing-item cf event" itemscope="" itemtype="http://schema.org/Event"><h3 itemprop="name" class="has-img">' 
                   +'<a itemprop="url" href="' + _link + '">'
                   + _Title + '</a></h3><div class="info" itemprop="startDate"><span class="date-fix">' 
@@ -103,6 +103,16 @@ function infoSession() {
         // append content to hmtl
         $("#show").append(_show);
         
+
+        // add content to the HTML
+        // For this page: https: //www.stthomas.edu/admissions/graduate/informationsessions/ 
+        var show_informationsessions = '<h3 itemprop = "name"><a itemprop ="url" href ="' + _link + '">' + _Title + '</a></h3 >'
+          + '<div class="info"><span><span itemprop="startDate" class="date-fix">' + _pubDate
+          +'</span></span></div><p itemprop="description">' + _Description
+          + '<a href="' + _link + '" class="view-all"><span></span>Read More</a></p>';
+
+        // append content to hmtl
+        $(".event-content-wrap").append(show_informationsessions);
 
       });
     }
